@@ -25,9 +25,9 @@ docker build -t quarkus-app-native -f src/main/docker/Dockerfile.native .
 ## Micronaut
 
 ```shell
+docker compose -f infrastructure/postgres.yaml up
 cd micronaut-app
 mvn test                          # Execute the tests
-docker compose -f infrastructure/postgres.yaml up
 mvn mn:run                        # Execute the application
 curl 'localhost:8702/micronaut'   # Invokes the hello endpoint
 ```
@@ -46,8 +46,8 @@ docker build -t micronaut-app-native -f src/main/docker/Dockerfile.native .
 ## Spring Boot
 
 ```shell
-cd springboot-app
 docker compose -f infrastructure/postgres.yaml up
+cd springboot-app
 mvn test                          # Execute the tests
 mvn spring-boot:run               # Execute the application
 curl 'localhost:8703/springboot'  # Invokes the hello endpoint
